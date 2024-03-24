@@ -1,0 +1,188 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+}function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(220);
+  
+  let angle1 = sin(frameCount * 0.5) * 90; // 회전 각도
+  let scale1 = map(sin(frameCount * 0.05), -1, 1, 0.5, 1.5); // 크기 변화
+  
+  let angle2 = cos(frameCount * 0.5) * 90; // 회전 각도
+  let scale2 = map(cos(frameCount * 0.05), -1, 1, 0.5, 1.5); // 크기 변화
+  
+  let angle3 = sin(frameCount * 0.5 + 180) * 90; // 회전 각도
+  let scale3 = map(sin(frameCount * 0.05 + 180), -1, 1, 0.5, 1.5); // 크기 변화
+  
+  let angle4 = cos(frameCount * 0.5 + 180) * 90; // 회전 각도
+  let scale4 = map(cos(frameCount * 0.05 + 180), -1, 1, 0.5, 1.5); // 크기 변화
+  
+  push();
+  translate(100, 100);
+  rotate(angle1);
+  scale(scale1);
+  drawCharacter1();
+  pop();
+  
+  push();
+  translate(300, 100);
+  rotate(angle2);
+  scale(scale2);
+  drawCharacter2();
+  pop();
+  
+  push();
+  translate(100, 300);
+  rotate(angle3);
+  scale(scale3);
+  drawCharacter3();
+  pop();
+  
+  push();
+  translate(300, 300);
+  rotate(angle4);
+  scale(scale4);
+  drawCharacter4();
+  pop();
+}
+// 캐릭터 1: 고양이
+function drawCharacter1() {
+  // 머리
+  fill(0);
+  ellipse(0, -20, 50, 50); // 머리를 줄임
+  
+  // 눈
+  fill(255);
+  ellipse(-15, -30, 15, 15); // 왼쪽 눈
+  ellipse(15, -30, 15, 15); // 오른쪽 눈
+  fill(0);
+  ellipse(-15, -30, 8, 8); // 왼쪽 눈동자
+  ellipse(15, -30, 8, 8); // 오른쪽 눈동자
+  
+  // 코
+  fill(255, 100, 100);
+  triangle(-3, -20, 0, -25, 3, -20); // 코를 더 위로 올림
+  
+  // 입
+  noFill();
+  stroke(0);
+  arc(0, -8, 20, 12, 0, PI); // 입을 조금 작게 변경
+  
+  // 귀 (세모)
+  fill(0); // 검은색
+  triangle(-23, -30, -15, -40, -5, -30); // 왼쪽 귀
+  triangle(23, -30, 15, -40, 5, -30); // 오른쪽 귀
+  
+  // 귀 위의 세모
+  triangle(-25, -35, -18, -45, -10, -35); // 왼쪽 귀 위 세모
+  triangle(25, -35, 18, -45, 10, -35); // 오른쪽 귀 위 세모
+}
+
+
+// 캐릭터 2: 강아지
+function drawCharacter2() {
+  // 머리
+  fill(200, 150, 100);
+  ellipse(0, -30, 80, 80); // 머리 크기 조정
+  
+  // 귀
+  fill(160, 120, 80); // 귀 색상
+  ellipse(-40, -60, 30, 30); // 왼쪽 귀
+  ellipse(40, -60, 30, 30); // 오른쪽 귀
+  
+  // 눈
+  fill(255);
+  ellipse(-20, -40, 25, 25); // 왼쪽 눈 크기 조정
+  ellipse(20, -40, 25, 25); // 오른쪽 눈 크기 조정
+  fill(0);
+  ellipse(-20, -40, 12, 12); // 왼쪽 눈동자 크기 조정
+  ellipse(20, -40, 12, 12); // 오른쪽 눈동자 크기 조정
+  
+  // 코
+  fill(80, 50, 20);
+  ellipse(0, -25, 12, 12); // 코 크기 및 색상 조정
+  
+  // 입
+  noFill();
+  stroke(0);
+  strokeWeight(2);
+  beginShape();
+  vertex(-10, -20);
+  quadraticVertex(0, -10, 10, -20); // 입 모양 조정
+  quadraticVertex(0, -5, -10, -20); // 하단 입술 추가
+  endShape();
+  
+}
+
+
+// 캐릭터 3: 곰
+function drawCharacter3() {
+  // 머리
+  fill(150, 75, 0);
+  ellipse(0, -30, 70, 70); // 머리 크기 조정
+  
+  // 귀
+  fill(150, 75, 0); // 귀 색상
+  ellipse(-30, -40, 20, 30); // 왼쪽 귀
+  ellipse(30, -40, 20, 30); // 오른쪽 귀
+  
+  // 눈
+  fill(255);
+  ellipse(-20, -40, 20, 20); // 왼쪽 눈 크기 조정
+  ellipse(20, -40, 20, 20); // 오른쪽 눈 크기 조정
+  fill(0);
+  ellipse(-20, -40, 10, 10); // 왼쪽 눈동자 크기 조정
+  ellipse(20, -40, 10, 10); // 오른쪽 눈동자 크기 조정
+  
+  // 코
+  fill(150, 75, 0);
+  ellipse(0, -20, 15, 15); // 코 크기 및 색상 조정
+  
+  // 입
+  noFill();
+  stroke(0);
+  strokeWeight(2);
+  arc(0, -10, 20, 15, 0, PI); // 입 모양 조정
+  
+
+}
+
+
+// 캐릭터 4: 토끼
+function drawCharacter4() {
+  // 머리
+  fill(255, 204, 204); 
+  ellipse(0, -80, 90, 90); 
+  
+  // 눈
+  fill(255);
+  ellipse(-20, -90, 25, 25); 
+  ellipse(20, -90, 25, 25); 
+  fill(0);
+  ellipse(-20, -90, 12, 12); 
+  ellipse(20, -90, 12, 12); 
+  
+  // 코
+  fill(255, 102, 102);
+  triangle(-5, -75, 5, -75, 0, -65); 
+  
+  // 입
+  noFill();
+  stroke(0);
+  arc(0, -70, 30, 20, 0, PI); 
+  
+  // 귀
+  fill(255, 204, 204); 
+  ellipse(-45, -120, 40, 80); 
+  ellipse(45, -120, 40, 80); 
+  fill(255);
+  ellipse(-45, -120, 20, 40); 
+  ellipse(45, -120, 20, 40);
+}
